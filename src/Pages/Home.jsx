@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -61,7 +61,7 @@ const Home = () => {
       {/* heading */}
       <h3 className="font-bold text-xl text-center mt-5">News</h3>
       {/* functionalities container*/}
-      <div className="flex justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
         {/* filter functionality */}
         <div>
           <label htmlFor="category" className="font-medium">
