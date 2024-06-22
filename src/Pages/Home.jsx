@@ -50,29 +50,56 @@ const Home = () => {
   //   slicing fetched data according to page
   const currentItems = articles.slice(indexOfFirstItem, indexOfLastItem);
 
+  //   function for searching
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchedText = e.target.search.value;
+    setCategory(searchedText);
+  };
   return (
     <div>
       {/* heading */}
       <h3 className="font-bold text-xl text-center mt-5">News</h3>
-      {/* filter options */}
-      <label htmlFor="category" className="font-medium">
-        Filter by:
-      </label>
-      {/* dropdown for selecting filter */}
-      <select
-        name="category"
-        className="p-2 border m-2"
-        onChange={(e) => {
-          setCategory(e.target.value);
-          setCurrentPage(1);
-        }}
-        id=""
-      >
-        <option value="Entertainment">Entertainment</option>
-        <option value="Business">Business</option>
-        <option value="Technology">Technology</option>
-        <option value="Sports">Sports</option>
-      </select>
+      {/* functionalities container*/}
+      <div className="flex justify-between">
+        {/* filter functionality */}
+        <div>
+          <label htmlFor="category" className="font-medium">
+            Filter by:
+          </label>
+          {/* dropdown for selecting filter */}
+          <select
+            name="category"
+            className="p-2 border m-2"
+            onChange={(e) => {
+              setCategory(e.target.value);
+              setCurrentPage(1);
+            }}
+            id=""
+          >
+            <option value="Entertainment">Entertainment</option>
+            <option value="Business">Business</option>
+            <option value="Technology">Technology</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </div>
+
+        {/* search functionality */}
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            name="search"
+            className="border p-2 mr-2 rounded-md"
+            id=""
+            placeholder="search here"
+          />
+          <input
+            type="submit"
+            className="btn btn-sm bg-blue-900 text-white"
+            value="search"
+          />
+        </form>
+      </div>
       {/* display fetched data */}
       <div>
         {loading ? (
